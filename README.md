@@ -2,7 +2,7 @@
 Welcome to te Code test made for i2 Testing created by Bruce Devlin.
 
 ## This challenge that was set:
-"provide code that iterates in multiples of A until X, then in multiples of A + 1 until 2X, then multiples of A + 2 until 3X"
+"provide code that iterates in multiples of A until X, then in multiples of A + 1 until 2X, then multiples of A + 2 until 3X" I had 1 hour to complete this challenge.
 
 ## A better understanding of the problem:
 "The code should allow for the input of 2 numbers, Value 1 (A) and Value 2 (X). My interptritation of the issue is that
@@ -14,4 +14,11 @@ for handling the addition.
 
 My code will sometimes exceed Value 2 as it gets to the closest value to X.
 
-The application also accepts arguments to multiply the values (seperated by a space.)
+The application also accepts arguments to multiply the values (seperated by a space).
+
+
+# Notes after completing
+- There is a flaw in loop 2 & 3 when the code is appending the number before values. This could be fixed fairly easily but, 
+unfortunately I ran out of time.
+- I have dyscalculia and so I found this code test to be quite challenging but I didn't let  this stop me for doing my best to
+understand and solve the problem.
