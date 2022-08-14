@@ -22,3 +22,5 @@ The application also accepts arguments to multiply the values (seperated by a sp
 unfortunately I ran out of time.
 - I have dyscalculia and so I found this code test to be quite challenging but I didn't let  this stop me for doing my best to
 understand and solve the problem.
+- After thinking on it more, I would change the "var"s in the MultiplyNumbers methods to "int"s to improve readability, I made
+these "var"s to make this method slightly more dynamic but this was unnecessary since the values are always "int"s.
