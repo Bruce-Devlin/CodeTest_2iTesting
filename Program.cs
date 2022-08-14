@@ -5,40 +5,54 @@ namespace CodeTest_i2Testing
 {
     internal class Program
     {
+        #region Misc
+        static async Task Log(string txt)
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("[" + DateTime.Now +" (" + DateTime.Now.Millisecond.ToString().Substring(0, 3) +"ms)" + "] Machine: ");
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(txt);
+        }
+        #endregion
+
         static void Main(string[] args)
         {
-            //Check if the applcation arguments is empty.
-            if (args.Length != 0)
-            {
-                //Application arguments have provided vaues A & X.
-                MultiplyNumber(int.Parse(args[0]), int.Parse(args[1])); //Cant run Asyn as its called from Main, with more time I could work around this.
-            }
-            else Start();
+            Start(args);
         }
 
-        static async void Start()
+        static async void Start(string[] args)
         {
-            //Get Value 1
-            Console.WriteLine("Please enter Value 1");
-            int value1 = 0; //Hold Value 1
-            while (!int.TryParse(Console.ReadLine(), out value1))
+            //Check if the applcation arguments is empty.
+            if (args.Length != 0 && int.TryParse(args[0], out int argValue1))
             {
-                //Couldn't parse input to a int
-                Console.WriteLine("Sorry this was not a valid number, was it too long? Or did it include letter/symbols? Please try again.");
+                //Application arguments have provided vaues A & X.
+                await MultiplyNumber(int.Parse(args[0]), int.Parse(args[1])); //Cant run Asyn as its called from Main, with more time I could work around this.
+            }
+            else
+            {
+                //Get Value 1
+                await Log("Please enter Value 1");
+                int value1 = 0; //Hold Value 1
+                while (!int.TryParse(Console.ReadLine(), out value1))
+                {
+                    //Couldn't parse input to a int
+                    await Log("Sorry this was not a valid number, was it too long? Or did it include letter/symbols? Please try again.");
+                }
+
+                //Get Value 2
+                await Log("Please enter Value 2");
+                int value2 = 0; //Hold Value 2
+                while (!int.TryParse(Console.ReadLine(), out value2))
+                {
+                    //Couldn't parse input to a int
+                    await Log("Sorry this was not a valid number, was it too long? Or did it include letter/symbols? Please try again.");
+                }
+
+                await MultiplyNumber(value1, value2); //To ensure the program displays our output correctly we will await this method.
             }
 
-            //Get Value 2
-            Console.WriteLine("Please enter Value 2");
-            int value2 = 0; //Hold Value 2
-            while (!int.TryParse(Console.ReadLine(), out value2))
-            {
-                //Couldn't parse input to a int
-                Console.WriteLine("Sorry this was not a valid number, was it too long? Or did it include letter/symbols? Please try again.");
-            }
-
-            await MultiplyNumber(value1, value2); //To ensure the program displays our output correctly we will await this method.
-
-            Console.WriteLine("Work completed, press any key to close...");
+            await Log("Work completed, press any key to close...");
             Console.ReadKey();
         }
 
@@ -46,56 +60,64 @@ namespace CodeTest_i2Testing
         {
             #region Loop 1
             //Original values (1)
-            var initialValue1 = value1;
-            var maxValue1 = value2;
-            var power1 = initialValue1;
+            int initialValue1 = value1;
+            int maxValue1 = value2;
+            int power1 = initialValue1;
 
-            Console.WriteLine("Values: InitValue=" + initialValue1 + "MaxValue=" + maxValue1);
+            await Log("Values: InitValue=" + initialValue1 + " MaxValue=" + maxValue1);
 
             //Iterate original values
-            for (int iteration = 0; initialValue1 < maxValue1; iteration++)
+            for (int iteration = 1; initialValue1 <= maxValue1; iteration++)
             {
+                string sum = initialValue1 + " X " + power1;
                 initialValue1 *= power1;
-                Console.WriteLine(initialValue1);
+                if (initialValue1 >= maxValue1) break;
+                await Log(iteration + " (" + sum + "): " + initialValue1);
             }
 
-            Console.WriteLine("Moving on to A + 1 until 2X");
+            await Log("Moving on to A + 1 until 2X");
             #endregion
             #region Loop 2
             //Values with modifiers (2)
             var initialValue2 = value1 + 1;
-            var maxValue2 = 2 * 10 + value2;
-            var power2 = initialValue2;
+            var maxValue2 = int.Parse("2" + value2.ToString());
+            int power2 = initialValue2;
 
-            Console.WriteLine("Values: InitValue=" + initialValue2 + "MaxValue=" + maxValue2);
+
+            await Log("Values: InitValue=" + initialValue2 + " MaxValue=" + maxValue2);
 
 
             //Iterate original values but + 1 to inital value until 2 followed by 
-            for (int iteration = 0; initialValue2 < maxValue2; iteration++)
+            for (int iteration = 1; initialValue2 <= maxValue2; iteration++)
             {
+                string sum = initialValue2 + " X " + power2;
                 initialValue2 *= power2;
-                Console.WriteLine(initialValue2);
+                if (initialValue2 >= maxValue2) break;
+                await Log(iteration + " (" + sum + "): " + initialValue2);
             }
 
-            Console.WriteLine("Moving on to A + 2 until 3X");
+            await Log("Moving on to A + 2 until 3X");
             #endregion
             #region Loop 3
             //Values with modifiers (3)
             var initialValue3 = value1 + 2;
-            var maxValue3 = 3 * 10 + value2;
-            var power3 = initialValue3;
+            var maxValue3 = int.Parse("3" + value2.ToString());
+            int power3 = initialValue3;
 
-            Console.WriteLine("Values: InitValue=" + initialValue3 + "MaxValue=" + maxValue3);
+
+            await Log("Values: InitValue=" + initialValue3 + " MaxValue=" + maxValue3);
 
 
             //Iterate original values but + 1 to inital value until 2 followed by 
-            for (int iteration = 0; initialValue3 < maxValue3; iteration++)
+            for (int iteration = 1; initialValue3 <= maxValue3; iteration++)
             {
+                string sum = initialValue3 + " X " + power3;
                 initialValue3 *= power3;
-                Console.WriteLine(initialValue3);
+                if (initialValue3 >= maxValue3) break;
+                await Log(iteration + " (" + sum + "): " + initialValue3);
             }
 
-            Console.WriteLine("All work completed!");
+            await Log("All work completed!");
             #endregion
         }
     }
