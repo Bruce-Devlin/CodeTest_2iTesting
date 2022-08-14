@@ -1,5 +1,5 @@
-# CodeTest_i2Testing
-Welcome to te Code test made for i2 Testing created by Bruce Devlin.
+# CodeTest_2iTesting
+Welcome to te Code test made for 2i Testing created by Bruce Devlin.
 
 ## This challenge that was set:
 "provide code that iterates in multiples of A until X, then in multiples of A + 1 until 2X, then multiples of A + 2 until 3X" I had 1 hour to complete this challenge.
