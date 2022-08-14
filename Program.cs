@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace CodeTest_i2Testing
+namespace CodeTest_2iTesting
 {
     internal class Program
     {
