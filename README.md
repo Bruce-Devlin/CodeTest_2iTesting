@@ -24,3 +24,4 @@ unfortunately I ran out of time.
 understand and solve the problem.
 - After thinking on it more, I would change the "var"s in the MultiplyNumbers methods to "int"s to improve readability, I made
 these "var"s to make this method slightly more dynamic but this was unnecessary since the values are always "int"s.
+- Annoyingly I miss-typed "2i Testing" as "i2 Testing".
