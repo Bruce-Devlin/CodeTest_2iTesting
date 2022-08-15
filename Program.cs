@@ -93,8 +93,8 @@ namespace CodeTest_2iTesting
 
             #region Loop 2
             //Values with modifiers (2)
-            var initialValue2 = value1 + 1;
-            var maxValue2 = int.Parse("2" + value2.ToString());
+            int initialValue2 = value1 + 1;
+            int maxValue2 = int.Parse("2" + value2.ToString());
             int power2 = initialValue2;
 
 
@@ -115,8 +115,8 @@ namespace CodeTest_2iTesting
 
             #region Loop 3
             //Values with modifiers (3)
-            var initialValue3 = value1 + 2;
-            var maxValue3 = int.Parse("3" + value2.ToString());
+            int initialValue3 = value1 + 2;
+            int maxValue3 = int.Parse("3" + value2.ToString());
             int power3 = initialValue3;
 
 
