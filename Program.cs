@@ -21,36 +21,27 @@ namespace CodeTest_2iTesting
             Start(args);
         }
 
-        static async void Start(string[] args)
+    static async void Start(string[] args)
         {
-            //Check if the applcation arguments is empty.
-            if (args.Length != 0 && int.TryParse(args[0], out int argValue1))
+            //Get Value 1
+            await Log("Please enter Value 1");
+            int value1 = 0; //Hold Value 1
+            while (!int.TryParse(Console.ReadLine(), out value1))
             {
-                //Application arguments have provided vaues A & X.
-                await MultiplyNumber(int.Parse(args[0]), int.Parse(args[1])); //Cant run Asyn as its called from Main, with more time I could work around this.
+                //Couldn't parse input to a int
+                await Log("Sorry this was not a valid number, was it too long? Or did it include letter/symbols? Please try again.");
             }
-            else
+
+            //Get Value 2
+            await Log("Please enter Value 2");
+            int value2 = 0; //Hold Value 2
+            while (!int.TryParse(Console.ReadLine(), out value2))
             {
-                //Get Value 1
-                await Log("Please enter Value 1");
-                int value1 = 0; //Hold Value 1
-                while (!int.TryParse(Console.ReadLine(), out value1))
-                {
-                    //Couldn't parse input to a int
-                    await Log("Sorry this was not a valid number, was it too long? Or did it include letter/symbols? Please try again.");
-                }
-
-                //Get Value 2
-                await Log("Please enter Value 2");
-                int value2 = 0; //Hold Value 2
-                while (!int.TryParse(Console.ReadLine(), out value2))
-                {
-                    //Couldn't parse input to a int
-                    await Log("Sorry this was not a valid number, was it too long? Or did it include letter/symbols? Please try again.");
-                }
-
-                await MultiplyNumber(value1, value2); //To ensure the program displays our output correctly we will await this method.
+                //Couldn't parse input to a int
+                await Log("Sorry this was not a valid number, was it too long? Or did it include letter/symbols? Please try again.");
             }
+
+            await MultiplyNumber(value1, value2); //To ensure the program displays our output correctly we will await this method.
 
             await Log("Work completed, press any key to close...");
             Console.ReadKey();
