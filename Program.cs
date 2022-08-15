@@ -6,22 +6,36 @@ namespace CodeTest_2iTesting
     internal class Program
     {
         #region Misc
+        /// <summary>
+        /// Writes a message in the console all user friendly-like. <3
+        /// </summary>
+        /// <param name="txt">The text you would like to write in the console</param>
+        /// <returns></returns>
         static async Task Log(string txt)
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.Write("[" + DateTime.Now +" (" + DateTime.Now.Millisecond.ToString().Substring(0, 3) +"ms)" + "] Machine: ");
+            Console.Write("[" + DateTime.Now +" (" + DateTime.Now.Millisecond.ToString().Substring(0, 2) +"ms)" + "] Machine: ");
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(txt);
         }
         #endregion
 
+        /// <summary>
+        /// Entry point for the application.
+        /// </summary>
+        /// <param name="args">Arguments passed at application launch</param>
         static void Main(string[] args)
         {
             Start(args);
         }
 
-    static async void Start(string[] args)
+        /// <summary>
+        /// The logical starting Task used to asynchronously manage the gathering of the values along with running and repeating the multiplications.
+        /// </summary>
+        /// <param name="args">Arguments passed at application launch</param>
+        /// <returns></returns>
+        static async Task Start(string[] args)
         {
             //Get Value 1
             await Log("Please enter Value 1");
@@ -43,10 +57,18 @@ namespace CodeTest_2iTesting
 
             await MultiplyNumber(value1, value2); //To ensure the program displays our output correctly we will await this method.
 
-            await Log("Work completed, press any key to close...");
-            Console.ReadKey();
+            await Log("Work completed, press any key to close or press the \"R\" key to retry...");
+            ConsoleKey input = Console.ReadKey().Key;
+            Console.WriteLine();
+            if (input == ConsoleKey.R) await Start(args);
         }
 
+        /// <summary>
+        /// Multiply value1 in iterations until it reaches value2.
+        /// </summary>
+        /// <param name="value1">Initial Value to also be used as a multiplier</param>
+        /// <param name="value2">The max value that the iterations can reach</param>
+        /// <returns></returns>
         static async Task MultiplyNumber(int value1, int value2)
         {
             #region Loop 1
@@ -68,6 +90,7 @@ namespace CodeTest_2iTesting
 
             await Log("Moving on to A + 1 until 2X");
             #endregion
+
             #region Loop 2
             //Values with modifiers (2)
             var initialValue2 = value1 + 1;
@@ -78,7 +101,7 @@ namespace CodeTest_2iTesting
             await Log("Values: InitValue=" + initialValue2 + " MaxValue=" + maxValue2);
 
 
-            //Iterate original values but + 1 to inital value until 2 followed by 
+            //Iterate original values but + 1 to inital value until 2 followed by Value 2
             for (int iteration = 1; initialValue2 <= maxValue2; iteration++)
             {
                 string sum = initialValue2 + " X " + power2;
@@ -89,6 +112,7 @@ namespace CodeTest_2iTesting
 
             await Log("Moving on to A + 2 until 3X");
             #endregion
+
             #region Loop 3
             //Values with modifiers (3)
             var initialValue3 = value1 + 2;
@@ -99,7 +123,7 @@ namespace CodeTest_2iTesting
             await Log("Values: InitValue=" + initialValue3 + " MaxValue=" + maxValue3);
 
 
-            //Iterate original values but + 1 to inital value until 2 followed by 
+            //Iterate original values but + 2 to inital value until 3 followed by Value 2
             for (int iteration = 1; initialValue3 <= maxValue3; iteration++)
             {
                 string sum = initialValue3 + " X " + power3;
