@@ -2,7 +2,7 @@
 Welcome to te Code test made for 2i Testing created by Bruce Devlin.
 
 ## Expectations
-For this I assume that the user will only input positive numbers and wishes to keep Value 1 (A) the same throughout iterations.
+For this I assume that the user will only input positive numbers (excluding 1) and wishes to keep Value 1 (A) the same throughout iterations.
 
 ## This challenge that was set:
 "provide code that iterates in multiples of A until X, then in multiples of A + 1 until 2X, then multiples of A + 2 until 3X" 
