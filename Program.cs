@@ -39,8 +39,8 @@ namespace CodeTest_2iTesting
         {
             //Get Value 1
             await Log("Please enter Value 1");
-            int value1 = 0; //Hold Value 1
-            while (!int.TryParse(Console.ReadLine(), out value1))
+            ulong value1 = 0; //Hold Value 1
+            while (!ulong.TryParse(Console.ReadLine(), out value1))
             {
                 //Couldn't parse input to a int
                 await Log("Sorry this was not a valid number, was it too long? Or did it include letter/symbols? Please try again.");
@@ -48,8 +48,8 @@ namespace CodeTest_2iTesting
 
             //Get Value 2
             await Log("Please enter Value 2");
-            int value2 = 0; //Hold Value 2
-            while (!int.TryParse(Console.ReadLine(), out value2))
+            ulong value2 = 0; //Hold Value 2
+            while (!ulong.TryParse(Console.ReadLine(), out value2))
             {
                 //Couldn't parse input to a int
                 await Log("Sorry this was not a valid number, was it too long? Or did it include letter/symbols? Please try again.");
@@ -69,13 +69,13 @@ namespace CodeTest_2iTesting
         /// <param name="value1">Initial Value to also be used as a multiplier</param>
         /// <param name="value2">The max value that the iterations can reach</param>
         /// <returns></returns>
-        static async Task MultiplyNumber(int value1, int value2)
+        static async Task MultiplyNumber(ulong value1, ulong value2)
         {
             #region Loop 1
             //Original values (1)
-            int initialValue1 = value1;
-            int maxValue1 = value2;
-            int power1 = initialValue1;
+            ulong initialValue1 = value1;
+            ulong maxValue1 = value2;
+            ulong power1 = initialValue1;
 
             await Log("Values: InitValue=" + initialValue1 + " MaxValue=" + maxValue1);
 
@@ -93,9 +93,9 @@ namespace CodeTest_2iTesting
 
             #region Loop 2
             //Values with modifiers (2)
-            int initialValue2 = value1 + 1;
-            int maxValue2 = int.Parse("2" + value2.ToString());
-            int power2 = initialValue2;
+            ulong initialValue2 = value1 + 1;
+            ulong maxValue2 = ulong.Parse("2" + value2.ToString());
+            ulong power2 = initialValue2;
 
 
             await Log("Values: InitValue=" + initialValue2 + " MaxValue=" + maxValue2);
@@ -115,9 +115,9 @@ namespace CodeTest_2iTesting
 
             #region Loop 3
             //Values with modifiers (3)
-            int initialValue3 = value1 + 2;
-            int maxValue3 = int.Parse("3" + value2.ToString());
-            int power3 = initialValue3;
+            ulong initialValue3 = value1 + 2;
+            ulong maxValue3 = ulong.Parse("3" + value2.ToString());
+            ulong power3 = initialValue3;
 
 
             await Log("Values: InitValue=" + initialValue3 + " MaxValue=" + maxValue3);
